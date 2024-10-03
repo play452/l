@@ -10,8 +10,8 @@ jobs:
     steps:
     - name: install
       run: |
-        sudo apt install sudo tmate curl
-
-    - name: tmate
+        sudo apt update && sudo apt install -y tmate curl
+        
+    - name: generate tmate session
       run: |
-        tmate
+        tmate -S ${{ github.repository }}-session
