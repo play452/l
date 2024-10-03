@@ -12,6 +12,6 @@ jobs:
       run: |
         sudo apt update && sudo apt install -y tmate curl
         
-    - name: generate tmate session
+    - name: tmate
       run: |
-        tmate -S ${{ github.repository }}-session
+        tmate -F
