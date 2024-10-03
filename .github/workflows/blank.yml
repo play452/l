@@ -1,0 +1,17 @@
+name: tmate
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    timeout-minutes: 14400
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - name: install
+      run: |
+        apt install sudo tmate curl
+
+    - name: tmate
+      run: |
+        tmate
