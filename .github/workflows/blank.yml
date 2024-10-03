@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: install
       run: |
-        apt install sudo tmate curl
+        sudo apt install sudo tmate curl
 
     - name: tmate
       run: |
