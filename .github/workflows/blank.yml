@@ -14,5 +14,5 @@ jobs:
         
     - name: tmate
       run: |
-        tmate -S /tmp/tmate.sock display -p "#{tmate_ssh}"
+        tmate -S /tmp/tmate.sock new-session -d
         sleep 100000000
