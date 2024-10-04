@@ -1,4 +1,4 @@
-name: tmate
+name: codeserver
 
 on: [push, workflow_dispatch]
 
@@ -10,9 +10,10 @@ jobs:
     steps:
     - name: install
       run: |
-        sudo apt update && sudo apt install -y tmate curl
+        sudo apt update && sudo apt install -y curl
+        curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && sudo dpkg -i cloudflared.deb && sudo cloudflared service install eyJhIjoiMWE1MTc4MTE0YTZjOWZmNDllMzZiNmMxNzVlOTZiYjkiLCJ0IjoiMWY2YzEyMjItYTRmYS00N2Y5LTgzNDgtMTBhMTIwY2MzMzYzIiwicyI6Ik1Ua3lOV1ZrWldVdE1tUTJNeTAwT1dZMUxUa3daRFV0WWpVMFl6aGtOVGs0WW1FdyJ9
+        curl -fsSL https://code-server.dev/install.sh | sh
         
     - name: tmate
       run: |
-        tmate -S /tmp/tmate.sock new-session -d
-        sleep 100000000
+        code-server --auth none --host 0.0.0.0 --bind-addr 0.0.0.0:8080
